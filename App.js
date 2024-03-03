@@ -1,20 +1,15 @@
-// import PokiCard from "./components/PokiCard.js";
-import { StyleSheet, SafeAreaView, Platform, View } from "react-native";
+import { StyleSheet, SafeAreaView, Platform, ScrollView } from "react-native";
 import PokiCard from "./components/PokiCard";
+import { data } from "./data";
 
 export default function App() {
-  const chamanderData = {
-    name: "Chamander",
-    image: require("./assets/charmander.png"),
-    type: "Fire",
-    hp: 39,
-    moves: ["Scratch", "Ember", "Growl", "Leer"],
-    weaknesses: ["Water", "Rock"],
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      <PokiCard {...chamanderData} />
+      <ScrollView>
+        {data.map((pokemon) => (
+          <PokiCard key={pokemon.name} {...pokemon} />
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 }
